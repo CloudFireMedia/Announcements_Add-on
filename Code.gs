@@ -1,5 +1,5 @@
 var SCRIPT_NAME = "Announcements_Add-on"
-var SCRIPT_VERSION = "v0.2"
+var SCRIPT_VERSION = "v1.0"
 
 function onInstall(event) {
   onOpen(event)
@@ -76,7 +76,7 @@ function onOpen(event) {
   function twoWeeks() {
   
     menu
-      .addItem('Invite Staff Sponsors to Comment', 'sendMailFunction')
+      .addItem('Invite Staff Sponsors to Comment', 'inviteStaffSponsorsToComment')
       .addSeparator()
       .addItem('Rotate Content', 'rotateContent')
       .addSeparator()
@@ -84,10 +84,12 @@ function onOpen(event) {
       .addSeparator()
       .addItem('Re-order Paragraphs', 'reorderParagraphs')
       .addItem('Remove Short Start Dates', 'removeShortStartDates')
-      .addItem('Format', 'draft_callFunctions')
+      .addItem('Format', 'formatGDoc')
       .addItem('Populate Empty Paragraphs', 'matchEvents')
       .addItem('Update Long Start Dates', 'modifyDatesInBody')
-      
+      .addItem('Count Instances of Announcements', 'countInstancesofLiveAnnouncement')
+      .addItem('Remove Announcement Instances Tally', 'cleanInstancesofLiveAnnouncement')
+            
   } // onOpen.twoWeeks()
     
   function archive() {
@@ -131,14 +133,16 @@ function format_removeEmptyParagraphs()         {Announcements.format_removeEmpt
 // 2 Weeks
 // -------
 
-function sendMailFunction()      {Announcements.sendMailFunction()}
-function rotateContent()         {Announcements.rotateContent()}
-function moveSlides()            {Announcements.moveSlides()}
-function reorderParagraphs()     {Announcements.reorderParagraphs()}
-function removeShortStartDates() {Announcements.removeShortStartDates()}
-function draft_callFunctions()   {Announcements.draft_callFunctions()}
-function matchEvents()           {Announcements.matchEvents()}
-function modifyDatesInBody()     {Announcements.modifyDatesInBody()}
+function inviteStaffSponsorsToComment()     {Announcements.inviteStaffSponsorsToComment()}
+function rotateContent()                    {Announcements.rotateContent()}
+// function moveSlides()                       {Announcements.moveSlides()} // In 0 Weeks
+function reorderParagraphs()                {Announcements.reorderParagraphs()}
+function removeShortStartDates()            {Announcements.removeShortStartDates()}
+function formatGDoc()                       {Announcements.formatGDoc()}
+function matchEvents()                      {Announcements.matchEvents()}
+function modifyDatesInBody()                {Announcements.modifyDatesInBody()}
+function countInstancesofLiveAnnouncement() {Announcements.countInstancesofLiveAnnouncement()}
+function cleanInstancesofLiveAnnouncement() {Announcements.cleanInstancesofLiveAnnouncement()}
 
 // Archive
 // -------
