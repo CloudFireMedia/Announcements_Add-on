@@ -1,5 +1,5 @@
 var SCRIPT_NAME = "Announcements_Add-on"
-var SCRIPT_VERSION = "v0.2"
+var SCRIPT_VERSION = "v1.2.1"
 
 function onInstall(event) {
   onOpen(event)
@@ -7,6 +7,7 @@ function onInstall(event) {
 
 function onOpen(event) {
 
+  console.log(SCRIPT_VERSION)
   console.log(event)
 
   var ui = DocumentApp.getUi()
@@ -58,7 +59,7 @@ function onOpen(event) {
   
     menu
       .addItem('Format', 'runAllFormattingFunctions_upcomingWeek')
-      .addItem('Move Service Slides', 'moveSlides')
+      .addItem('Move Service Slides', 'copySlides')
       .addItem('Email Staff', 'emailStaff')
       
   } // onOpen.zeroWeeks()
@@ -76,18 +77,20 @@ function onOpen(event) {
   function twoWeeks() {
   
     menu
-      .addItem('Invite Staff Sponsors to Comment', 'sendMailFunction')
+      .addItem('Invite Staff Sponsors to Comment', 'inviteStaffSponsorsToComment')
       .addSeparator()
       .addItem('Rotate Content', 'rotateContent')
       .addSeparator()
-      .addItem('Copy This Sunday\'s Service Slides to This Sunday\'s \'Live  Slides\' folder', 'moveSlides')
+      .addItem('Copy This Sunday\'s Service Slides to This Sunday\'s \'Live  Slides\' folder', 'copySlides')
       .addSeparator()
       .addItem('Re-order Paragraphs', 'reorderParagraphs')
       .addItem('Remove Short Start Dates', 'removeShortStartDates')
-      .addItem('Format', 'draft_callFunctions')
+      .addItem('Format', 'formatGDoc')
       .addItem('Populate Empty Paragraphs', 'matchEvents')
       .addItem('Update Long Start Dates', 'modifyDatesInBody')
-      
+      .addItem('Count Instances of Announcements', 'countInstancesofLiveAnnouncement')
+      .addItem('Remove Announcement Instances Tally', 'cleanInstancesofLiveAnnouncement')
+            
   } // onOpen.twoWeeks()
     
   function archive() {
@@ -115,7 +118,7 @@ function showInstructions_RecurringContent() {Announcements.showInstructions_Rec
 
 // Menu
 function runAllFormattingFunctions_upcomingWeek() {Announcements.runAllFormattingFunctions_upcomingWeek()}
-function moveSlides()                             {Announcements.moveSlides()}
+function copySlides()                             {Announcements.copySlides()}
 function emailStaff()                             {Announcements.emailStaff()}
 
 // Client-side
@@ -131,14 +134,16 @@ function format_removeEmptyParagraphs()         {Announcements.format_removeEmpt
 // 2 Weeks
 // -------
 
-function sendMailFunction()      {Announcements.sendMailFunction()}
-function rotateContent()         {Announcements.rotateContent()}
-function moveSlides()            {Announcements.moveSlides()}
-function reorderParagraphs()     {Announcements.reorderParagraphs()}
-function removeShortStartDates() {Announcements.removeShortStartDates()}
-function draft_callFunctions()   {Announcements.draft_callFunctions()}
-function matchEvents()           {Announcements.matchEvents()}
-function modifyDatesInBody()     {Announcements.modifyDatesInBody()}
+function inviteStaffSponsorsToComment()     {Announcements.inviteStaffSponsorsToComment()}
+function rotateContent()                    {Announcements.rotateContent()}
+// function copySlides()                       {Announcements.copySlides()} // In 0 Weeks
+function reorderParagraphs()                {Announcements.reorderParagraphs()}
+function removeShortStartDates()            {Announcements.removeShortStartDates()}
+function formatGDoc()                       {Announcements.formatGDoc()}
+function matchEvents()                      {Announcements.matchEvents()}
+function modifyDatesInBody()                {Announcements.modifyDatesInBody()}
+function countInstancesofLiveAnnouncement() {Announcements.countInstancesofLiveAnnouncement()}
+function cleanInstancesofLiveAnnouncement() {Announcements.cleanInstancesofLiveAnnouncement()}
 
 // Archive
 // -------
