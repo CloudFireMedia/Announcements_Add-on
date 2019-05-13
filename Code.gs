@@ -1,5 +1,5 @@
 var SCRIPT_NAME = "Announcements_Add-on"
-var SCRIPT_VERSION = "v1.2.1"
+var SCRIPT_VERSION = "v1.3"
 
 function onInstall(event) {
   onOpen(event)
@@ -86,7 +86,6 @@ function onOpen(event) {
       .addItem('Re-order Paragraphs', 'reorderParagraphs')
       .addItem('Remove Short Start Dates', 'removeShortStartDates')
       .addItem('Format', 'formatGDoc')
-      .addItem('Populate Empty Paragraphs', 'matchEvents')
       .addItem('Update Long Start Dates', 'modifyDatesInBody')
       .addItem('Count Instances of Announcements', 'countInstancesofLiveAnnouncement')
       .addItem('Remove Announcement Instances Tally', 'cleanInstancesofLiveAnnouncement')
@@ -140,7 +139,6 @@ function rotateContent()                    {Announcements.rotateContent()}
 function reorderParagraphs()                {Announcements.reorderParagraphs()}
 function removeShortStartDates()            {Announcements.removeShortStartDates()}
 function formatGDoc()                       {Announcements.formatGDoc()}
-function matchEvents()                      {Announcements.matchEvents()}
 function modifyDatesInBody()                {Announcements.modifyDatesInBody()}
 function countInstancesofLiveAnnouncement() {Announcements.countInstancesofLiveAnnouncement()}
 function cleanInstancesofLiveAnnouncement() {Announcements.cleanInstancesofLiveAnnouncement()}
