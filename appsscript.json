@@ -7,13 +7,13 @@
       "version": "v2"
     }],
     "libraries": [{
-      "userSymbol": "Announcements",
-      "libraryId": "1kxAFGTA8W7RrWzs-MxIEjHz3Q85yF_BH5kcaWk_K9sjOICcI7JkmxHmy",
-      "version": "13"
-    }, {
       "userSymbol": "Config",
       "libraryId": "1oO44r3nax5MO1XsI1hlr4ZM0OtPVCQKgDYUe08ej_SkIKn9uvzZ6WKQl",
       "version": "10"
+    }, {
+      "userSymbol": "Announcements",
+      "libraryId": "1kxAFGTA8W7RrWzs-MxIEjHz3Q85yF_BH5kcaWk_K9sjOICcI7JkmxHmy",
+      "version": "14"
     }]
   },
   "exceptionLogging": "STACKDRIVER"
