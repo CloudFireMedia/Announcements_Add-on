@@ -1,5 +1,5 @@
 var SCRIPT_NAME = "Announcements_Add-on"
-var SCRIPT_VERSION = "v1.3"
+var SCRIPT_VERSION = "v1.4"
 
 function onInstall(event) {
   onOpen(event)
