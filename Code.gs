@@ -1,5 +1,5 @@
 var SCRIPT_NAME = "Announcements_Add-on"
-var SCRIPT_VERSION = "v1.4"
+var SCRIPT_VERSION = "v1.5"
 
 function onInstall(event) {
   onOpen(event)
@@ -16,7 +16,7 @@ function onOpen(event) {
     ui.createAddonMenu().addItem('Start - Display full menu', 'getAuth').addToUi()
     return
   }
-
+  
   var boundDoc = DocumentApp.getActiveDocument()
   
   if (boundDoc === null) {
@@ -76,20 +76,30 @@ function onOpen(event) {
   
   function twoWeeks() {
   
+    var currentSubMenu = ui.createMenu('... for the current document')
+      .addItem('Sort events chronologically', 'reorderParagraphs')
+      .addItem('Remove "short start dates" from document', 'removeShortStartDates')
+      .addItem('Update event descriptions (NOT IMPLEMENTED)', 'matchEvents')
+      .addItem('Phrase "long start dates" in natural language', 'modifyDatesInBody')
+      .addItem('Display tally of historical instances of each event on the current document', 'countInstancesofLiveAnnouncement')
+      .addItem('Remove tally of historical instances of each event on the current document', 'cleanInstancesofLiveAnnouncement')
+
+    var otherSubMenu = ui.createMenu('... for other CloudFire components')
+      .addItem('Copy This Sunday\'s Service Slides to This Sunday\'s \'Live  Announcements Slides\' folder', 'copySlides')
+
+    var manualSubMenu = ui.createMenu('Manually execute individual scripts...')
+    manualSubMenu.addSubMenu(currentSubMenu)
+    manualSubMenu.addSubMenu(otherSubMenu)
+
     menu
-      .addItem('Invite Staff Sponsors to Comment', 'inviteStaffSponsorsToComment')
-      .addSeparator()
-      .addItem('Rotate Content', 'rotateContent')
-      .addSeparator()
-      .addItem('Copy This Sunday\'s Service Slides to This Sunday\'s \'Live  Slides\' folder', 'copySlides')
-      .addSeparator()
-      .addItem('Re-order Paragraphs', 'reorderParagraphs')
-      .addItem('Remove Short Start Dates', 'removeShortStartDates')
-      .addItem('Format', 'formatGDoc')
-      .addItem('Update Long Start Dates', 'modifyDatesInBody')
-      .addItem('Count Instances of Announcements', 'countInstancesofLiveAnnouncement')
-      .addItem('Remove Announcement Instances Tally', 'cleanInstancesofLiveAnnouncement')
-            
+      .addItem('Rotate content', 'rotateContent')
+      .addSeparator()     
+      .addItem('Format document', 'formatGDoc')
+      .addSeparator()           
+      .addItem('Invite Event Sponsors to comment', 'inviteStaffSponsorsToComment')      
+      .addSeparator()      
+      .addSubMenu(manualSubMenu)
+                      
   } // onOpen.twoWeeks()
     
   function archive() {
@@ -142,6 +152,7 @@ function formatGDoc()                       {Announcements.formatGDoc()}
 function modifyDatesInBody()                {Announcements.modifyDatesInBody()}
 function countInstancesofLiveAnnouncement() {Announcements.countInstancesofLiveAnnouncement()}
 function cleanInstancesofLiveAnnouncement() {Announcements.cleanInstancesofLiveAnnouncement()}
+function matchEvents()                      {}
 
 // Archive
 // -------
